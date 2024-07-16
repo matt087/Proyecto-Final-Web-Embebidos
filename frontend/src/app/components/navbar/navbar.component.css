@@ -1,0 +1,80 @@
+.navbar{
+    width: 100vw;
+    display: flex;
+    height: 20vh;
+    background-color: #4361ee;
+    font-family: sans-serif;
+}
+.nav-logo{
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+}
+.nav-logo h1{
+    font-size: 40px;
+    color: white;
+    
+}
+.nav-logo img{
+    height: 15vh;
+}
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+
+}
+.nav-links {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    height: 7vh;
+}
+
+.nav-links button {
+    margin: 0 10px; /* Espacio entre los botones */
+    font-size: 22px;
+    font-weight: bold;
+    height: 7vh;
+    background-color: #4361ee;
+    border: none;
+  }
+
+
+  .nav-links button:hover{
+    margin: 0 10px; /* Espacio entre los botones */
+    font-size: 22px;
+    background-color:  white;
+    color: #4361ee;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+.nav-links button.active-link{
+    margin: 0 10px; /* Espacio entre los botones */
+    font-size: 22px;
+    background-color:  #3a0ca3;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .privado button{
+    margin: 0 10px; /* Espacio entre los botones */
+    font-size: 22px;
+    font-weight: bold;
+    height: 7vh;
+    background-color: #4361ee;
+    border: none;
+  }
+
+.privado button:hover{
+    margin: 0 10px; /* Espacio entre los botones */
+    font-size: 22px;
+    background-color:  white;
+    color: #4361ee;
+    border-radius: 5px;
+    cursor: pointer;
+  }

@@ -1,0 +1,49 @@
+.main-vertical{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.section-horizontal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50vw;
+}
+
+.info{
+    width: 50vw;
+}
+
+.info2{
+    width: 70vw;
+}
+
+.info3{
+    width: 70vw;
+}
+
+.info3 h2{
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+.info3 p{    
+    text-align: justify;
+}
+
+
+.info h2{
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+.info p{    
+    text-align: justify;
+}
+
+.info p span{    
+    font-style: italic;
+    font-weight: bold;
+}

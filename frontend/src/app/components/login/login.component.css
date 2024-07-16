@@ -1,0 +1,58 @@
+.main-vertical{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 70vh;
+}
+
+.section-horizontal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+form {
+  width: 30vw;
+  margin: 0 auto;
+  padding: 1em;
+  border: 1px solid #ccc;
+  border-radius: 1em;
+}
+
+div {
+  margin-bottom: 1em;
+}
+
+label {
+  margin-bottom: .5em;
+  color: #333333;
+  display: block;
+  width: 30%;
+}
+
+input {
+  border: 1px solid #CCCCCC;
+  padding: .5em;
+  font-size: 1em;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+button {
+  padding: 0.7em;
+  color: #fff;
+  background-color: #007BFF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+button[disabled] {
+  background-color: #CCCCCC;
+}
+
+.error{
+  font-style: italic;
+}

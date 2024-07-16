@@ -1,0 +1,47 @@
+<div class="main-vertical">
+    <form [formGroup]="userForm" (ngSubmit)="submitForm()">
+      <div class="section-horizontal">
+        <label for="name">Nombre:</label>
+        <input id="name" formControlName="name" />
+      </div>
+      <div *ngIf="userForm.controls['name'].invalid && (userForm.controls['name'].dirty || userForm.controls['name'].touched)">
+        <div class="error" *ngIf="userForm.controls['name'].errors?.['required']">El nombre es requerido.</div>
+      </div>
+  
+      <div class="section-horizontal">
+        <label for="email">Correo electrónico:</label>
+        <input id="email" formControlName="email" />
+      </div>
+      <div *ngIf="userForm.controls['email'].invalid && (userForm.controls['email'].dirty || userForm.controls['email'].touched)">
+        <div class="error" *ngIf="userForm.controls['email'].errors?.['required']">El correo es requerido.</div>
+        <div class="error" *ngIf="userForm.controls['email'].errors?.['email']">Correo electrónico inválido.</div>
+      </div>
+  
+      <div class="section-horizontal">
+        <label for="password">Contraseña:</label>
+        <input id="password" type="password" formControlName="password" />
+      </div>
+      <div *ngIf="userForm.controls['password'].invalid && (userForm.controls['password'].dirty || userForm.controls['password'].touched)">
+        <div class="error" *ngIf="userForm.controls['password'].errors?.['required']">La contraseña es requerida.</div>
+      </div>
+  
+      <div class="section-horizontal">
+        <label for="confirmPassword">Confirmar contraseña:</label>
+        <input id="confirmPassword" type="password" formControlName="confirmPassword" />
+      </div>
+      <div *ngIf="userForm.hasError('passwordMismatch') && (userForm.controls['confirmPassword'].dirty || userForm.controls['confirmPassword'].touched)">
+        <div class="error">Las contraseñas no coinciden.</div>
+      </div>
+  
+      <div class="section-horizontal">
+        <label for="role">Rol:</label>
+        <select id="role" formControlName="role">
+          <option value="admin">Administrador</option>
+          <option value="operator">Operador</option>
+        </select>
+      </div>
+  
+      <button type="submit" [disabled]="userForm.invalid">Crear Usuario</button>
+    </form>
+  </div>
+  

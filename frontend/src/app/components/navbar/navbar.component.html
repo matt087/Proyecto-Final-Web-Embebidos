@@ -1,0 +1,26 @@
+<div class="navbar">
+    <div class="nav-logo">
+        <!--<img src="" alt="logo">-->
+        <h1>Nombre de la pagina</h1>
+    </div>
+    <div class="nav-container">
+        <div class="nav-links">
+            <button [routerLink]="['/home']" routerLinkActive="active-link">Home</button>
+            <button mat-button [routerLink]="['/register']" routerLinkActive="active-link"  *ngIf="authService.getRole()=='administrador' ">Ingresar Usuarios</button>
+            <button mat-button [routerLink]="['/list']" routerLinkActive="active-link" *ngIf="authService.getRole()=='administrador'">Listado de Usuarios</button>
+            <button mat-button [routerLink]="['/dashboard']" routerLinkActive="active-link" *ngIf="authService.getRole()=='operador'">Dashboard</button>
+            <button mat-button [routerLink]="['/report']" routerLinkActive="active-link" *ngIf="authService.getRole()=='operador'">Reporte</button>
+
+            <ng-container *ngIf="!authService.loggedIn(); else loggedIn">
+                <div class="privado">
+                    <button [routerLink]="['/login']" routerLinkActive="active-link">Iniciar Sesión</button>
+                </div>
+            </ng-container>
+            <ng-template #loggedIn>
+                <div class="privado">
+                    <button aria-current="page" routerLinkActive="active-link" (click)="authService.logout()">Cerrar Sesión</button>
+                </div>
+              </ng-template>  
+        </div>
+    </div>
+</div>
