@@ -2,7 +2,7 @@
     width: 100vw;
     display: flex;
     height: 20vh;
-    background-color: #4361ee;
+    background-color: #506EB4;
     font-family: sans-serif;
 }
 .nav-logo{
@@ -39,7 +39,7 @@
     font-size: 22px;
     font-weight: bold;
     height: 7vh;
-    background-color: #4361ee;
+    background-color: #506EB4;
     border: none;
   }
 
@@ -48,14 +48,14 @@
     margin: 0 10px; /* Espacio entre los botones */
     font-size: 22px;
     background-color:  white;
-    color: #4361ee;
+    color: #506EB4;
     border-radius: 5px;
     cursor: pointer;
   }
 .nav-links button.active-link{
     margin: 0 10px; /* Espacio entre los botones */
     font-size: 22px;
-    background-color:  #3a0ca3;
+    background-color:  #506EB4;
     color: white;
     border-radius: 5px;
     cursor: pointer;
@@ -66,7 +66,7 @@
     font-size: 22px;
     font-weight: bold;
     height: 7vh;
-    background-color: #4361ee;
+    background-color: #506EB4;
     border: none;
   }
 
