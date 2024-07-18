@@ -1,0 +1,19 @@
+[
+    {
+      "nombre": "admin",
+      "email": "admin@est.ups.edu.ec",
+      "password1": "1234",
+      "password2": "1234",
+      "isAdmin": true,
+      "isOperator": false
+    },
+    {
+      "nombre": "user",
+      "email": "user@est.ups.edu.ec",
+      "password1": "1234",
+      "password2": "1234",
+      "isAdmin": false,
+      "isOperator": true
+    }
+  ]
+  

@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrl: './report.component.css'
 })
 export class ReportComponent {
+  verReportes() {
+    // Lógica para ver reportes
+    console.log('Ver Reportes');
+  }
 
+  descargarReportes() {
+    // Lógica para descargar reportes
+    console.log('Descargar Reportes');
+  }
 }

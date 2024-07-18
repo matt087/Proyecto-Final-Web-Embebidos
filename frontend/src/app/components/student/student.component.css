@@ -1,0 +1,29 @@
+.dashboard-container {
+    text-align: center;
+  }
+  
+  .title {
+    font-size: 2em;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-weight: bold;
+  }
+  
+  .levels-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .level-box {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 300px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  

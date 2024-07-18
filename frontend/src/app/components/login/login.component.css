@@ -56,3 +56,7 @@ button[disabled] {
 .error{
   font-style: italic;
 }
+
+h4{
+  font-weight: bold;
+}
