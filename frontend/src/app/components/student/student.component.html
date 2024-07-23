@@ -3,7 +3,21 @@
     <div class="levels-container">
       <div class="level-box">
         <h2>Nivel de luz</h2>
-        <!-- Aquí puedes añadir el contenido relacionado con el nivel de luz -->
+        <div *ngIf="isBrowser && lights.length > 0; else noData">
+          <h2>Gráfico de Mediciones de Luz</h2>
+          <div style="display: block;">
+            <canvas baseChart
+                    [data]="lightChart"
+                    [options]="chartOptions"
+                    [legend]="true"
+                    [type]="'line'">
+            </canvas>
+          </div>
+        </div>
+        
+        <ng-template #noData>
+          <p>No hay datos disponibles.</p>
+        </ng-template>
       </div>
       <div class="level-box">
         <h2>Nivel de ruido</h2>

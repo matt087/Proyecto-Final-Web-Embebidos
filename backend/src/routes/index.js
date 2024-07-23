@@ -9,7 +9,6 @@ const fs = require('fs');
 const path = require('path');
 var http = require('http');
 var querystring = require('querystring');
-var db = []; // Base de datos para almacenar los datos
 var url = require('url');
 
 //LOGIN
@@ -34,76 +33,33 @@ router.post('/register', async (req, res) => {
 });
 
 //SENSOR
-function requestHandler(request, response) {
+router.post('/sensor', async (req, res) => {
+    try {
+        const { light } = req.body;
 
-    // Parsear la URL recibida
-    var uriData = url.parse(request.url);
-    var pathname = uriData.pathname;          // Path de la URL
+        if (!light) {
+            return res.status(400).json({ error: 'Falta el parámetro: light' });
+        }
 
-    //-----------------------------------------------------------------------------------------
-    if (request.method === 'POST' && pathname === '/update') {
-        var body = '';
-        
-        request.on('data', function (data) {
-            body += data;
-        });
+        const newSensor = new Sensor({ light });
+        await newSensor.save();
 
-        request.on('end', function () {
-            var postData = JSON.parse(body);
-            
-            // Asegurarse de que se recibió el campo 'light' en el cuerpo del POST
-            if (postData.hasOwnProperty('light')) {
-                var light = parseFloat(postData.light);
-                const newSensor = new Sensor ({ light });
-                newSensor.save()
-                .then(() => {
-                  res.json({ message: 'Medición añadido correctamente' });
-                })
-                .catch(error => {
-                  console.error('Error al añadir la medición:', error);
-                  res.status(500).send('Error al añadir la medición');
-                });
-                
-                console.log(newSensor); // Mostrar los datos en la consola del servidor
-                response.writeHead(200, {
-                    'Content-Type': 'application/json'
-                });
-                response.end(JSON.stringify({ status: 'OK' })); // Enviar respuesta de éxito
-            } else {
-                response.writeHead(400, {
-                    'Content-Type': 'application/json'
-                });
-                response.end(JSON.stringify({ error: 'Missing parameter: light' })); // Enviar error si falta el campo 'light'
-            }
-        });
-    } else if (pathname === '/get') {
-        response.writeHead(200, {
-            'Content-Type': 'application/json'
-        });
-        Sensor.find()
-        .then(s => {
-            res.json(s);
-        })
-        .catch(error => {
-            console.error('Error al obtener las mediciones:', error);
-            res.status(500).send('Error al obtener las medicones');
-        });
-    } else { 
-        // Si no se encuentra ninguna ruta válida, servir el archivo index.html
-        fs.readFile('./index.html', function(error, content) {
-            if (error) {
-                response.writeHead(500);
-                response.end('Error interno del servidor');
-            } else {
-                response.writeHead(200, {
-                    'Content-Type': 'text/html'
-                });
-                response.end(content); // Enviar contenido del archivo index.html
-            }
-        });
+        res.status(200).json({ message: 'Medición añadida correctamente', data: newSensor });
+    } catch (error) {
+        console.error('Error al añadir la medición:', error);
+        res.status(500).json({ error: 'Error al añadir la medición' });
     }
-}
+});
 
+router.get('/get-sensor', async (req, res) => {
+    try {
+        const sensors = await Sensor.find();
+        res.status(200).json(sensors);
+    } catch (error) {
+        console.error('Error al obtener las mediciones:', error);
+        res.status(500).json({ error: 'Error al obtener las mediciones' });
+    }
+});
 
 router.post('/login', async(req, res) =>{
     const {email, password1}= req.body;

@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms'; 
 import { ReactiveFormsModule } from '@angular/forms'; 
+import { BaseChartDirective } from 'ng2-charts';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -17,6 +18,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { ReportComponent } from './components/report/report.component';
+import { provideCharts, withDefaultRegisterables, NgChartsConfiguration} from 'ng2-charts';
 
 
 
@@ -36,7 +38,8 @@ import { ReportComponent } from './components/report/report.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BaseChartDirective,
   ],
   providers: [
     provideClientHydration(),
@@ -46,7 +49,8 @@ import { ReportComponent } from './components/report/report.component';
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
       multi: true
-    }
+    },
+    provideCharts(withDefaultRegisterables())
   ],
   bootstrap: [AppComponent]
 })
