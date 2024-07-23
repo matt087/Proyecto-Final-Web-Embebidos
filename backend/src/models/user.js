@@ -9,7 +9,7 @@ const userSchema = new Schema({
     isAdmin: Boolean,
     isOperator: Boolean
 },{
-        timestamps: true //campo adicional del método: createdup y updatedup
+    timestamps: true //campo adicional del método: createdup y updatedup
  });
 
 module.exports = model('user', userSchema); //exportar

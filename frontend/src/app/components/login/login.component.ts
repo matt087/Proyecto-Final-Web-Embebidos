@@ -1,27 +1,47 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
   user = {
     email: '',
-    password1:''
+    password1: ''
   }
 
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService:AuthService,
-    private router:Router) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password1: ['', Validators.required]
+      email: ['', [Validators.required, Validators.email, this.emailDomainValidator]],
+      password1: ['', [Validators.required, Validators.minLength(6), this.passwordStrengthValidator]]
     });
+  }
+
+  // Validador personalizado para el dominio del email
+  emailDomainValidator(control: AbstractControl): ValidationErrors | null {
+    const email = control.value;
+    const domain = email.substring(email.lastIndexOf("@") + 1);
+    if (domain !== 'est.ups.edu.ec') {
+      return { 'emailDomain': true };
+    }
+    return null;
+  }
+
+  // Validador personalizado para la fortaleza de la contraseña
+  passwordStrengthValidator(control: AbstractControl): ValidationErrors | null {
+    const password = control.value;
+    const hasNumber = /\d/.test(password);
+    const hasLetter = /[a-zA-Z]/.test(password);
+    if (!hasNumber || !hasLetter) {
+      return { 'passwordStrength': true };
+    }
+    return null;
   }
 
   signIn(): void {
@@ -29,8 +49,8 @@ export class LoginComponent {
       this.user = this.loginForm.value;
       console.log('Email:', this.user.email);
       console.log('Password:', this.user.password1);
-      this.authService.signIn(this.user)
-      .subscribe(
+
+      this.authService.signIn(this.user).subscribe(
         res => {
           console.log(res);
           localStorage.setItem('token', res.token);
@@ -42,11 +62,9 @@ export class LoginComponent {
             alert('Credenciales incorrectas. Inténtelo de nuevo.');
           }
         }
-      );    
+      );
+    } else {
+      console.log('Formulario inválido');
     }
-    else{
-      console.log('Invalido')
-    }
-    
   }
 }

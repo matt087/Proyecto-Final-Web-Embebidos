@@ -16,7 +16,7 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router, @Inject(PLATFORM_ID) private platformId: Object,
               @Inject(DOCUMENT) private document: Document) { }
 
-  signUp(user: { nombre: string; email: string; password1: string; password2: string; }): Observable<any> {
+  signUp(user: { nombre: string; email: string; password1: string; password2: string; isAdmin: boolean; isOperator: boolean}): Observable<any> {
     return this.http.post<any>(`${this.URL}/register`, user).pipe(
       catchError(error => {
         return throwError(error);

@@ -3,7 +3,8 @@
     display: flex;
     height: 20vh;
     background-color: #506EB4;
-    font-family: sans-serif;
+    font-family: "Montserrat", sans-serif;
+
 }
 .nav-logo{
     width: 40%;
@@ -14,7 +15,8 @@
 }
 .nav-logo h1{
     font-size: 40px;
-    color: white;
+    color: #ffc300;
+    font-weight: bold;
     
 }
 .nav-logo img{
@@ -55,8 +57,8 @@
 .nav-links button.active-link{
     margin: 0 10px; /* Espacio entre los botones */
     font-size: 22px;
-    background-color:  #506EB4;
-    color: white;
+    background-color: white;
+    color:  #506EB4;
     border-radius: 5px;
     cursor: pointer;
   }
