@@ -3,6 +3,7 @@ const router = Router();
 
 const User = require('../models/user');
 const Sensor = require('../models/sensor');
+const Sound = require('../models/sound');
 const jwt = require('jsonwebtoken');
 const bodyParser = require('body-parser');
 const fs = require('fs');
@@ -58,6 +59,34 @@ router.get('/get-sensor', async (req, res) => {
     } catch (error) {
         console.error('Error al obtener las mediciones:', error);
         res.status(500).json({ error: 'Error al obtener las mediciones' });
+    }
+});
+//sound
+router.post('/sound', async (req, res) => {
+    try {
+        const { sound } = req.body;
+
+        if (!sound) {
+            return res.status(400).json({ error: 'Falta el parámetro: sound' });
+        }
+
+        const newSound = new Sound({ sound });
+        await newSound.save();
+
+        res.status(200).json({ message: 'Medición añadida correctamente Sound', data: newSound });
+    } catch (error) {
+        console.error('Error al añadir la medición Sound:', error);
+        res.status(500).json({ error: 'Error al añadir la medición Sound' });
+    }
+});
+
+router.get('/get-sound', async (req, res) => {
+    try {
+        const sounds = await Sound.find();
+        res.status(200).json(sounds);
+    } catch (error) {
+        console.error('Error al obtener las mediciones sounds:', error);
+        res.status(500).json({ error: 'Error al obtener las mediciones sounds' });
     }
 });
 

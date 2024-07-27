@@ -12,6 +12,7 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class StudentComponent  implements OnInit{
   lights: number[] = []; 
+  sounds: number[] = []; 
   isBrowser: boolean;
   lightChart: ChartData<'line'> = {
     labels: [], // Etiquetas para el gráfico
@@ -41,6 +42,35 @@ export class StudentComponent  implements OnInit{
     }
   };
 
+  soundChart: ChartData<'bar'> = {
+    labels: [], // Etiquetas para el gráfico
+    datasets: [
+      {
+        data: [],
+        label: 'Sonido',
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        borderColor: 'rgba(75, 192, 192, 1)',
+        borderWidth: 1
+      }
+    ]
+  };
+
+  chartOptions1: ChartOptions<'bar'> = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top'
+      },
+      tooltip: {
+        callbacks: {
+          label: function(context) {
+            return `Sound: ${context.raw}`;
+          }
+        }
+      }
+    }
+  };
+
   constructor(private http: HttpClient, private ss: SensorService, @Inject(PLATFORM_ID) private platformId: Object) { 
     this.isBrowser = isPlatformBrowser(platformId);
   }
@@ -51,12 +81,21 @@ export class StudentComponent  implements OnInit{
         this.lights = lights;
         this.updateChart();
       },
-      error => console.error('Error al obtener los sensores:', error)
+      error => console.error('Error al obtener las mediciones luz:', error)
+    );
+    this.ss.getSounds().subscribe(
+      (sounds: number[]) => {
+        this.sounds = sounds;
+        this.updateChart();
+      },
+      error => console.error('Error al obtener las mediciones sonido:', error)
     );
   }
   updateChart() {
-    this.lightChart.labels = this.lights.map((_, index) => `Medición ${index + 1}`);
+    this.lightChart.labels = this.lights.map((_, index) => `Luz ${index + 1}`);
     this.lightChart.datasets[0].data = this.lights;
+    this.soundChart.labels = this.sounds.map((_, index) => `Sonido ${index + 1}`);
+    this.soundChart.datasets[0].data = this.sounds;
   }
 } 
 

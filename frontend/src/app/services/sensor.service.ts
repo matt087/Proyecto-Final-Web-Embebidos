@@ -8,13 +8,19 @@ import { Observable } from 'rxjs';
 })
 export class SensorService {
 
-  private apiUrl = 'http://localhost:3000/get-sensor'; // URL del endpoint
+  private URL = 'http://localhost:3000'; // URL del endpoint
 
   constructor(private http: HttpClient) { }
 
   getSensors() {
-    return this.http.get<any[]>(this.apiUrl).pipe(
+    return this.http.get<any[]>(`${this.URL}/get-sensor`).pipe(
       map(sensors => sensors.map(sensor => sensor.light)) // Extraer solo el parámetro 'light'
+    );
+  }
+
+  getSounds() {
+    return this.http.get<any[]>(`${this.URL}/get-sound`).pipe(
+      map(sounds => sounds.map(sounds => sounds.sound))
     );
   }
 }
