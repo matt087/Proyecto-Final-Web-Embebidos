@@ -20,6 +20,11 @@
     width: 70vw;
 }
 
+.info2 h2{
+    font-size: 4.3vh;
+    font-weight: 450;
+}
+
 .info3{
     width: 70vw;
 }
@@ -37,7 +42,6 @@
 .info h2{
     text-align: center;
     margin-bottom: 0px;
-    font-weight: bold;
 }
 
 .info p{    

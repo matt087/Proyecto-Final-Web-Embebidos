@@ -1,26 +1,23 @@
 .navbar{
     width: 100vw;
     display: flex;
-    height: 20vh;
-    background-color: #506EB4;
-    font-family: "Montserrat", sans-serif;
-
+    height: 11vh;
+    background-color: #506EB4;;
 }
+
 .nav-logo{
-    width: 40%;
+    width: 30%;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     gap: 15px;
 }
 .nav-logo h1{
-    font-size: 40px;
-    color: #ffc300;
-    font-weight: bold;
-    
+    font-size: 22px;
+    color: #ffc300;    
 }
 .nav-logo img{
-    height: 15vh;
+    height: 10vh;
 }
 .nav-container {
     display: flex;
@@ -33,48 +30,58 @@
     display: flex;
     justify-content: center;
     flex-grow: 1;
-    height: 7vh;
+    height: 6vh;
 }
 
 .nav-links button {
     margin: 0 10px; /* Espacio entre los botones */
-    font-size: 22px;
-    font-weight: bold;
-    height: 7vh;
+    font-size: 20px;
+    height: 5.5vh;
     background-color: #506EB4;
     border: none;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
   }
 
 
-  .nav-links button:hover{
+.nav-links button:hover{
     margin: 0 10px; /* Espacio entre los botones */
-    font-size: 22px;
+    font-size: 20px;
     background-color:  white;
     color: #506EB4;
     border-radius: 5px;
     cursor: pointer;
-  }
+}
 .nav-links button.active-link{
     margin: 0 10px; /* Espacio entre los botones */
-    font-size: 22px;
+    font-size: 20px;
     background-color: white;
     color:  #506EB4;
     border-radius: 5px;
     cursor: pointer;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
   }
 
   .privado button{
     margin: 0 10px; /* Espacio entre los botones */
-    font-size: 22px;
-    font-weight: bold;
-    height: 7vh;
+    font-size: 20px;
+    height: 5.5vh;
     background-color: #506EB4;
     border: none;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
   }
 
 .privado button:hover{
     margin: 0 10px; /* Espacio entre los botones */
-    font-size: 22px;
+    font-size: 20px;
     background-color:  white;
     color: #4361ee;
     border-radius: 5px;

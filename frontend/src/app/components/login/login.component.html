@@ -2,15 +2,15 @@
     <form [formGroup]="loginForm" (ngSubmit)="signIn()">
         <h4 class="mb-4 text-center">Inicio de Sesión</h4>
         <div class="section-horizontal">
-            <label for="email">Email:</label>
-            <input id="email" formControlName="email" />
+            <label for="email">E-mail:</label>
+            <input id="email" formControlName="email" style="margin-left: 2.1em;"/>
         </div>
         <div *ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)">
             <div class="error" *ngIf="loginForm.controls['email'].errors?.['required']">El correo es requerido.</div>
         </div>
       
         <div class="section-horizontal">
-            <label for="password1">Contraseña:</label>
+            <label for="password1">Contraseña: </label>
             <input id="password1" type="password" formControlName="password1" />
         </div>
         <div *ngIf="loginForm.controls['password1'].invalid && (loginForm.controls['password1'].dirty || loginForm.controls['password1'].touched)">

@@ -3,3 +3,23 @@
     min-height: 66vh;
 }
 
+.bg-cover{
+    background-image: url('../assets/data.png'); 
+    background-size: cover;
+    background-position: center;
+    color: white;
+    height: 100vh;
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Ajusta el color y la opacidad según sea necesario */
+}
+  
+  .container {
+    position: relative;
+    z-index: 1;
+  }
