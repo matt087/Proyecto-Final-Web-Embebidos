@@ -1,9 +1,11 @@
-<div class="dashboard-container">
-    <h1 class="title">Dashboard</h1>
-    <div class="levels-container">
-      <div class="level-box">
+<div class="title text-center">
+  <h1>Dashboard</h1>
+</div>
+<div class="dashboard-container mt-3">
+    <div class="levels-container" #lightChartContainer>
+      <div class="level-box" id="contentToExport">
         <div *ngIf="isBrowser && lights.length > 0; else noData">
-          <h2>Gráfico de Mediciones de Luz</h2>
+          <h3>Gráfico de Mediciones de Luz</h3>
           <div class="luz">
             <canvas baseChart
                     [data]="lightChart"
@@ -18,9 +20,9 @@
           <p>No hay datos disponibles.</p>
         </ng-template>
       </div>
-      <div class="level-box">
+      <div class="level-box" #soundChartContainer>
         <div *ngIf="isBrowser && sounds.length > 0; else noData">
-          <h2>Gráfico de Mediciones de Sonido</h2>
+          <h3>Gráfico de Mediciones de Sonido</h3>
           <div class="luz">
             <canvas baseChart
                     [data]="soundChart"

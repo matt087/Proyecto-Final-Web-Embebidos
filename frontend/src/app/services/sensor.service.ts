@@ -17,10 +17,17 @@ export class SensorService {
       map(sensors => sensors.map(sensor => sensor.light)) // Extraer solo el parámetro 'light'
     );
   }
+  getSensorsTotal() {
+    return this.http.get<any[]>(`${this.URL}/get-sensor`);
+  }
 
   getSounds() {
     return this.http.get<any[]>(`${this.URL}/get-sound`).pipe(
       map(sounds => sounds.map(sounds => sounds.sound))
     );
+  }
+
+  getSoundsTotal() {
+    return this.http.get<any[]>(`${this.URL}/get-sound`);
   }
 }

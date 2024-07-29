@@ -3,7 +3,7 @@
         <h4 class="mb-4 text-center">Inicio de Sesión</h4>
         <div class="section-horizontal">
             <label for="email">E-mail:</label>
-            <input id="email" formControlName="email" style="margin-left: 2.1em;"/>
+            <input id="email" formControlName="email" style="margin-left: 0.6em;"/>
         </div>
         <div *ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)">
             <div class="error" *ngIf="loginForm.controls['email'].errors?.['required']">El correo es requerido.</div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject  } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild, ElementRef  } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SensorService } from '../../services/sensor.service';
 import { ChartData, ChartOptions } from 'chart.js'; 
@@ -11,6 +11,9 @@ import { isPlatformBrowser } from '@angular/common';
   styleUrl: './student.component.css'
 })
 export class StudentComponent  implements OnInit{
+  @ViewChild('lightChartContainer') lightChartContainer!: ElementRef;
+  @ViewChild('soundChartContainer') soundChartContainer!: ElementRef;
+
   lights: number[] = []; 
   sounds: number[] = []; 
   isBrowser: boolean;
@@ -97,5 +100,14 @@ export class StudentComponent  implements OnInit{
     this.soundChart.labels = this.sounds.map((_, index) => `Sonido ${index + 1}`);
     this.soundChart.datasets[0].data = this.sounds;
   }
+
+  getLightChartElement() {
+    return this.lightChartContainer?.nativeElement;
+  }
+
+  getSoundChartElement() {
+    return this.soundChartContainer?.nativeElement;
+  }
+
 } 
 
