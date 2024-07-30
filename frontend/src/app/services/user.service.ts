@@ -7,7 +7,7 @@ import { User } from '../models/user';
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = 'http://localhost:3000'; // URL del endpoint en tu backend
+  private apiUrl = 'http://18.226.180.169:3000'; // URL del endpoint en tu backend
 
   constructor(private http: HttpClient) { }
   getUsers(): Observable<User[]> {
