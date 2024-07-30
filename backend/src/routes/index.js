@@ -90,6 +90,50 @@ router.get('/get-sound', async (req, res) => {
     }
 });
 
+router.get('/get-users', async (req, res) => {
+    try {
+        const users = await User.find(); // Obtén todos los usuarios
+        res.status(200).json(users); 
+    } catch (error) {
+        console.error('Error al obtener los usuarios:', error);
+        res.status(500).json({ error: 'Error al obtener los usuarios' });
+    }
+});
+
+router.delete('/delete-user/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const result = await User.findByIdAndDelete(id); // Elimina el usuario por ID
+
+        if (!result) {
+            return res.status(404).json({ error: 'Usuario no encontrado' });
+        }
+
+        res.status(200).json({ message: 'Usuario eliminado con éxito' });
+    } catch (error) {
+        console.error('Error al eliminar el usuario:', error);
+        res.status(500).json({ error: 'Error al eliminar el usuario' });
+    }
+});
+
+router.put('/update-user/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const updates = req.body; // Los datos de actualización
+
+        const updatedUser = await User.findByIdAndUpdate(id, updates, { new: true });
+
+        if (!updatedUser) {
+            return res.status(404).json({ error: 'Usuario no encontrado' });
+        }
+
+        res.status(200).json(updatedUser);
+    } catch (error) {
+        console.error('Error al actualizar el usuario:', error);
+        res.status(500).json({ error: 'Error al actualizar el usuario' });
+    }
+}); 
+
 router.post('/login', async(req, res) =>{
     const {email, password1}= req.body;
     const userFind = await User.findOne({email});

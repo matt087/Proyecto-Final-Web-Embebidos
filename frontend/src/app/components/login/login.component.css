@@ -28,16 +28,16 @@ label {
   margin-bottom: .5em;
   color: #333333;
   display: block;
-  width: 30%;
+  width: 32%;
 }
 
 input {
   border: 1px solid #CCCCCC;
   padding: .5em;
   font-size: 1em;
-  width: 100%;
+  width: 24vw;
   box-sizing: border-box;
-  margin-left: 0.5em;
+  margin-left: 10px;
 }
 
 button {
@@ -57,6 +57,7 @@ button[disabled] {
 
 .error{
   font-style: italic;
+  color: #007BFF;
 }
 
 h4{

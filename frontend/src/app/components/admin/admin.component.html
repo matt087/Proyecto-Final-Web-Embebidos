@@ -11,13 +11,37 @@
       </thead>
       <tbody>
         <tr *ngFor="let user of users">
-          <td>{{ user.name }}</td>
+          <td>{{ user.nombre }}</td>
           <td>{{ user.email }}</td>
-          <td>{{ user.password }}</td>
+          <td>{{ user.password1 }}</td>
           <td><button (click)="editUser(user)">Editar</button></td>
           <td><button (click)="deleteUser(user)">Eliminar</button></td>
         </tr>
       </tbody>
     </table>
+  </div>
+
+  <div class="horizontal">
+    <div class="vertical">
+      <div *ngIf="selectedUser">
+        <h3>Editar Usuario</h3>
+        <form (ngSubmit)="saveUser()">
+          <label>
+            Nombre:
+            <input [(ngModel)]="selectedUser.nombre" name="nombre" required>
+          </label>
+          <label>
+            Email:
+            <input [(ngModel)]="selectedUser.email" name="email" required>
+          </label>
+          <label>
+            Contraseña:
+            <input [(ngModel)]="selectedUser.password1" name="password1" type="password" required>
+          </label>
+          <button type="submit">Guardar</button>
+          <button type="button" (click)="selectedUser = null">Cancelar</button>
+        </form>
+      </div>
+    </div>
   </div>
   
