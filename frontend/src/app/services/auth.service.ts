@@ -11,7 +11,7 @@ import { catchError, tap } from 'rxjs/operators';
 })
 export class AuthService {
 
-  private URL = 'http://localhost:3000';
+  private URL = 'http://18.226.180.169:3000';
 
   constructor(private http: HttpClient, private router: Router, @Inject(PLATFORM_ID) private platformId: Object,
               @Inject(DOCUMENT) private document: Document) { }

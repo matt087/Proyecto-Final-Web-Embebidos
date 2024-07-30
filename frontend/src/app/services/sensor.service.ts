@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class SensorService {
 
-  private URL = 'http://localhost:3000'; // URL del endpoint
+  private URL = 'http://18.226.180.169:3000'; // URL del endpoint
 
   constructor(private http: HttpClient) { }
 
