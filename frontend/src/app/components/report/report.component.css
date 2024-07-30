@@ -5,14 +5,15 @@
   h2{
     margin-bottom: 10px;
     font-weight: bold;
+    color: #506EB4;
   }
   .download-section
   {
+    margin-top: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 7%;
   }
   
   .max{

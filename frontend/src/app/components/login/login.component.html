@@ -17,8 +17,9 @@
             <div class="error" *ngIf="loginForm.controls['password1'].errors?.['required']">La contraseña es requerida.</div>
         </div>
         
-      
-        <button type="submit" [disabled]="loginForm.invalid">Iniciar Sesión</button>
+        <div class="section-horizontal-2">
+            <button type="submit" [disabled]="loginForm.invalid">Iniciar Sesión</button>
+        </div>
       </form>
       
 </div>
