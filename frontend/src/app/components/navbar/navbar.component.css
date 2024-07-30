@@ -2,7 +2,8 @@
     width: 100vw;
     display: flex;
     height: 11vh;
-    background-color: #506EB4;;
+    background-color: #506EB4;
+    padding: 0;
 }
 
 .nav-logo{
@@ -19,22 +20,25 @@
 .nav-logo img{
     height: 10vh;
 }
+.login{
+    margin-left: 15vw;
+}
 .nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 60%;
+    width: 49%;
 
 }
 .nav-links {
     display: flex;
     justify-content: center;
-    flex-grow: 1;
+    gap: 10px;    
     height: 6vh;
+    width: 100%;
 }
 
 .nav-links button {
-    margin: 0 10px; /* Espacio entre los botones */
     font-size: 20px;
     height: 5.5vh;
     background-color: #506EB4;
@@ -45,9 +49,7 @@
     font-style: normal;
   }
 
-
 .nav-links button:hover{
-    margin: 0 10px; /* Espacio entre los botones */
     font-size: 20px;
     background-color:  white;
     color: #506EB4;
@@ -55,7 +57,6 @@
     cursor: pointer;
 }
 .nav-links button.active-link{
-    margin: 0 10px; /* Espacio entre los botones */
     font-size: 20px;
     background-color: white;
     color:  #506EB4;
@@ -68,7 +69,6 @@
   }
 
   .privado button{
-    margin: 0 10px; /* Espacio entre los botones */
     font-size: 20px;
     height: 5.5vh;
     background-color: #506EB4;
@@ -80,9 +80,8 @@
   }
 
 .privado button:hover{
-    margin: 0 10px; /* Espacio entre los botones */
     font-size: 20px;
-    background-color:  white;
+        background-color:  white;
     color: #4361ee;
     border-radius: 5px;
     cursor: pointer;

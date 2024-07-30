@@ -1,54 +1,87 @@
-.main-vertical{
+
+  .intro {
+    /*border: 1px solid #86a5ee; /* Borde más oscuro para definición */
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 80vw;
+  }
+  .vertical{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-}
-
-.section-horizontal{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50vw;
-}
-
-.info{
-    width: 50vw;
-}
-
-.info2{
-    width: 70vw;
-}
-
-.info2 h2{
-    font-size: 4.3vh;
-    font-weight: 450;
-}
-
-.info3{
-    width: 70vw;
-}
-
-.info3 h2{
-    text-align: center;
-    margin-bottom: 0px;
-}
-
-.info3 p{    
-    text-align: justify;
-}
-
-
-.info h2{
-    text-align: center;
-    margin-bottom: 0px;
-}
-
-.info p{    
-    text-align: justify;
-}
-
-.info p span{    
-    font-style: italic;
+    gap: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  
+  .intro h1 {
+    color: #506EB4;
+    font-size: 2em;
+    margin-bottom: 10px;
     font-weight: bold;
+  }
+
+  .intro img {
+    width: 70%;
+  }
+  
+  .intro p {
+    font-size: 1.1em;
+    line-height: 1.6;
+  }
+  
+  /* Estilos para la sección de información sobre el proyecto */
+  .about {
+    width: 80vw;
+    border: 1px solid #86a5ee; /* Borde más oscuro para definición */
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    background-color: #506EB4;
+    text-align: center;
+  }
+
+  /* Estilos para la sección de funciones */
+.funciones {
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 80vw;
+}
+
+.funciones h2 {
+    font-size: 2.5em; /* Tamaño de fuente más grande para el título */
+    color: #506EB4;
+    margin-bottom: 20px;
+}
+
+.funciones-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Espacio entre las tarjetas */
+}
+
+.funcion {
+    flex: 1; /* Permite que cada tarjeta ocupe el mismo ancho */
+    background-color: #ffffff; /* Fondo blanco para las tarjetas */
+    border: 1px solid #86a5ee; /* Borde más oscuro para separación */
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil para las tarjetas */
+}
+
+.funcion h3 {
+    font-size: 1.5em; /* Tamaño de fuente para los subtítulos */
+    color: #506EB4;
+    margin-bottom: 10px;
+}
+
+.funcion p {
+    font-size: 1em; /* Tamaño de fuente para los párrafos */
+    color: #555; /* Color de texto más claro */
+    line-height: 1.6; /* Altura de línea para mejor legibilidad */
 }

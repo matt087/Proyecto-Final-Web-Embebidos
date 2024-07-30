@@ -1,9 +1,18 @@
-<app-student></app-student>
-<div class="reportes-container mb-3">
-    <h1 class="title">Reportes</h1>
-    <div class="buttons-container">
-      <button (click)="verReportes()">Ver Reportes</button>
-      <button (click)="descargarReportes()">Descargar Reportes</button>
-    </div>
+<div class="download-section">
+  <h2>Descargar Reporte del Data Center</h2>
+  <div class="max">
+    <p>Este reporte incluye información detallada sobre los niveles de luz y sonido del data center de nuestra universidad. Los datos recogidos por los sensores se utilizan para asegurar un ambiente óptimo para el funcionamiento de los equipos.</p>
+    <p>El reporte contiene:</p>
+    <ul>
+      <li>Lecturas históricas de los niveles de luz</li>
+      <li>Lecturas históricas de los niveles de sonido</li>
+      <li>Estadísticas y análisis de los datos recogidos</li>
+    </ul>
   </div>
   
+   
+
+  <button (click)="descargarReportes()">
+    Descargar Reporte
+  </button>
+</div>

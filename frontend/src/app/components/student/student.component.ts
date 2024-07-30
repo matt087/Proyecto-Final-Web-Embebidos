@@ -29,6 +29,20 @@ export class StudentComponent  implements OnInit{
       }
     ]
   };
+
+  lightChartBar: ChartData<'bar'> = {
+    labels: [], // Etiquetas para el gráfico
+    datasets: [
+      {
+        data: [],
+        label: 'Luz',
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        borderColor: 'rgba(75, 192, 192, 1)',
+        borderWidth: 1
+      }
+    ]
+  };
+
   chartOptions: ChartOptions<'line'> = {
     responsive: true,
     plugins: {
@@ -45,7 +59,23 @@ export class StudentComponent  implements OnInit{
     }
   };
 
-  soundChart: ChartData<'bar'> = {
+  chartOptionsBar: ChartOptions<'bar'> = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top'
+      },
+      tooltip: {
+        callbacks: {
+          label: function(context) {
+            return `Luz: ${context.raw}`;
+          }
+        }
+      }
+    }
+  };
+
+  soundChart: ChartData<'line'> = {
     labels: [], // Etiquetas para el gráfico
     datasets: [
       {
@@ -58,7 +88,20 @@ export class StudentComponent  implements OnInit{
     ]
   };
 
-  chartOptions1: ChartOptions<'bar'> = {
+  soundChartBar: ChartData<'bar'> = {
+    labels: [], // Etiquetas para el gráfico
+    datasets: [
+      {
+        data: [],
+        label: 'Sonido',
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        borderColor: 'rgba(75, 192, 192, 1)',
+        borderWidth: 1
+      }
+    ]
+  };
+
+  chartOptions1: ChartOptions<'line'> = {
     responsive: true,
     plugins: {
       legend: {
@@ -74,6 +117,21 @@ export class StudentComponent  implements OnInit{
     }
   };
 
+  chartOptionsBar1: ChartOptions<'bar'> = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top'
+      },
+      tooltip: {
+        callbacks: {
+          label: function(context) {
+            return `Sound: ${context.raw}`;
+          }
+        }
+      }
+    }
+  };
   constructor(private http: HttpClient, private ss: SensorService, @Inject(PLATFORM_ID) private platformId: Object) { 
     this.isBrowser = isPlatformBrowser(platformId);
   }
@@ -99,6 +157,11 @@ export class StudentComponent  implements OnInit{
     this.lightChart.datasets[0].data = this.lights;
     this.soundChart.labels = this.sounds.map((_, index) => `Sonido ${index + 1}`);
     this.soundChart.datasets[0].data = this.sounds;
+    this.lightChartBar.labels =  this.lights.map((_, index) => `Luz ${index + 1}`);
+    this.lightChartBar.datasets[0].data = this.lights;
+    this.soundChartBar.labels = this.sounds.map((_, index) => `Sonido ${index + 1}`);
+    this.soundChartBar.datasets[0].data = this.sounds;
+
   }
 
   getLightChartElement() {

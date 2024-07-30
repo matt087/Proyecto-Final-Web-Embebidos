@@ -19,6 +19,8 @@ import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { ReportComponent } from './components/report/report.component';
 import { provideCharts, withDefaultRegisterables, NgChartsConfiguration} from 'ng2-charts';
+import { AboutComponent } from './components/about/about.component';
+
 
 
 
@@ -32,7 +34,8 @@ import { provideCharts, withDefaultRegisterables, NgChartsConfiguration} from 'n
     RegisterComponent,
     StudentComponent,
     AdminComponent,
-    ReportComponent
+    ReportComponent,
+    AboutComponent
     ],
   imports: [
     BrowserModule,

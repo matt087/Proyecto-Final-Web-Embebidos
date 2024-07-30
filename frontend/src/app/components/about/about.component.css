@@ -1,0 +1,82 @@
+/* Estilos para el contenedor principal */
+.main-vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Secciones */
+.info2, .info3 {
+    width: 100%; /* Ajuste para que las secciones ocupen el 100% del contenedor */
+    max-width: 900px; /* Ajuste de ancho máximo para mantener la consistencia */
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    /*background-color: #bfcff5; /* Fondo suave para las secciones */
+    border: 1px solid #ddd; /* Borde suave para separación */
+}
+
+.info2 h2, .info3 h2 {
+    font-size: 2em; /* Tamaño de fuente más consistente */
+    font-weight: 700; /* Negrita más prominente */
+    color: #506EB4;
+    margin-bottom: 15px;
+}
+
+.info2 p, .info3 p {
+    font-size: 1.1em; /* Tamaño de fuente para mejor legibilidad */
+    color: #555; /* Color de texto más claro */
+    line-height: 1.6; /* Altura de línea para mejor legibilidad */
+}
+
+.info2 ul, .info3 ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+.info2 ul, .info3 ul{
+    list-style-type: none; 
+}
+
+.info2 ul li strong, .info3 ul li strong {
+    font-size: 1em;
+    margin-bottom: 10px;
+    color: #506EB4;
+}
+
+/* Estilos para la tarjeta de imagen */
+.card {
+    background-color: #fffff3;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+}
+
+.card img {
+    max-width: 100%; /* Ajuste para que la imagen no se desborde */
+    height: auto; /* Mantener la proporción de la imagen */
+    border-radius: 8px; /* Bordes redondeados para la imagen */
+}
+
+/* Estilos generales */
+h2 {
+    font-weight: 700; /* Consistencia con el peso de fuente */
+    text-align: center;
+    color: #333; /* Color de texto oscuro */
+    margin-bottom: 20px;
+}
+
+p {
+    text-align: justify;
+}
+
+p span {
+    font-style: italic;
+    font-weight: bold;
+    color: #333; /* Asegurar que el estilo de texto resaltado sea visible */
+}

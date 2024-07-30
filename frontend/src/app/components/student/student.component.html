@@ -2,41 +2,80 @@
   <h1>Dashboard</h1>
 </div>
 <div class="dashboard-container mt-3">
-    <div class="levels-container" #lightChartContainer>
-      <div class="level-box" id="contentToExport">
-        <div *ngIf="isBrowser && lights.length > 0; else noData">
-          <h3>Gráfico de Mediciones de Luz</h3>
-          <div class="luz">
-            <canvas baseChart
-                    [data]="lightChart"
-                    [options]="chartOptions"
-                    [legend]="true"
-                    [type]="'line'">
-            </canvas>
-          </div>
+  <div class="levels-container" #lightChartContainer>
+    <div class="level-box" id="contentToExport">
+      <div *ngIf="isBrowser && lights.length > 0; else noData">
+        <h3>Gráfico de Mediciones de Luz</h3>
+        <div class="luz">
+          <canvas baseChart
+                  [data]="lightChart"
+                  [options]="chartOptions"
+                  [legend]="true"
+                  [type]="'line'">
+          </canvas>
         </div>
-        
-        <ng-template #noData>
-          <p>No hay datos disponibles.</p>
-        </ng-template>
       </div>
-      <div class="level-box" #soundChartContainer>
-        <div *ngIf="isBrowser && sounds.length > 0; else noData">
-          <h3>Gráfico de Mediciones de Sonido</h3>
-          <div class="luz">
-            <canvas baseChart
-                    [data]="soundChart"
-                    [options]="chartOptions1"
-                    [legend]="true"
-                    [type]="'bar'">
-            </canvas>
-          </div>
+      
+      <ng-template #noData>
+        <p>No hay datos disponibles.</p>
+      </ng-template>
+    </div>
+    <div class="level-box" #soundChartContainer>
+      <div *ngIf="isBrowser && sounds.length > 0; else noData">
+        <h3>Gráfico de Mediciones de Sonido</h3>
+        <div class="luz">
+          <canvas baseChart
+                  [data]="soundChart"
+                  [options]="chartOptions1"
+                  [legend]="true"
+                  [type]="'line'">
+          </canvas>
         </div>
+      </div>
 
-        <ng-template #noData>
-          <p>No hay datos disponibles sonido</p>
-        </ng-template>
-      </div>
+      <ng-template #noData>
+        <p>No hay datos disponibles sonido</p>
+      </ng-template>
     </div>
   </div>
+</div>
+
+<div class="dashboard-container mt-3">
+  <div class="levels-container" #lightChartContainer>
+    <div class="level-box" id="contentToExport">
+      <div *ngIf="isBrowser && lights.length > 0; else noData">
+        <h3>Gráfico de Mediciones de Luz</h3>
+        <div class="luz">
+          <canvas baseChart
+                  [data]="lightChartBar"
+                  [options]="chartOptionsBar"
+                  [legend]="true"
+                  [type]="'bar'">
+          </canvas>
+        </div>
+      </div>
+      
+      <ng-template #noData>
+        <p>No hay datos disponibles.</p>
+      </ng-template>
+    </div>
+    <div class="level-box" #soundChartContainer>
+      <div *ngIf="isBrowser && sounds.length > 0; else noData">
+        <h3>Gráfico de Mediciones de Sonido</h3>
+        <div class="luz">
+          <canvas baseChart
+                  [data]="soundChartBar"
+                  [options]="chartOptionsBar1"
+                  [legend]="true"
+                  [type]="'bar'">
+          </canvas>
+        </div>
+      </div>
+
+      <ng-template #noData>
+        <p>No hay datos disponibles sonido</p>
+      </ng-template>
+    </div>
+  </div>
+</div>
   

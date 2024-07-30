@@ -3,7 +3,10 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 70vh;
+    min-height: 70vh;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
   }
   
   .section-horizontal {
