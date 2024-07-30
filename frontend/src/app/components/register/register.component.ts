@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
+import { UserService } from '../../services/user.service';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-register',
@@ -9,16 +10,8 @@ import { AuthService } from '../../services/auth.service';
 })
 export class RegisterComponent implements OnInit {
   userForm: FormGroup;
-  user = {
-    nombre: '',
-    email: '',
-    password1: '',
-    password2: '',
-    isAdmin: true,
-    isOperator: false
-  }
 
-  constructor(private fb: FormBuilder, private as:AuthService) {
+  constructor(private fb: FormBuilder, private as: UserService) {
     this.userForm = this.fb.group({
       name: ['', [Validators.required, this.noNumbersValidator]],
       email: ['', [Validators.required, Validators.email, this.emailDomainValidator]],
@@ -33,14 +26,40 @@ export class RegisterComponent implements OnInit {
 
   submitForm(): void {
     if (this.userForm.valid) {
-      console.log(this.userForm.value);
-      // Aquí podrías enviar los datos del usuario al backend o realizar alguna otra acción
+      const { name, email, password, confirmPassword, role } = this.userForm.value;
+      const isAdmin = role === 'admin';
+      const isOperator = role === 'operator';
+      
+      this.as.register({
+        nombre: name,
+        email,
+        password1: password,
+        password2: confirmPassword,
+        isAdmin,
+        isOperator
+      }).subscribe(
+        response => {
+          console.log('Usuario registrado exitosamente:', response);
+          alert("¡Usuario registrado exitosamente!");
+          this.userForm.reset();
+          this.userForm.patchValue({
+            name: '',
+            email: '',
+            password: '',
+            confirmPassword: '',
+            role: ''
+          });
+        },
+        error => {
+          console.error('Error al registrar usuario:', error);
+          alert("¡Error al registrar usuario!");
+        }
+      );
     } else {
       console.log('Formulario inválido');
     }
   }
 
-  // Validador personalizado para verificar que las contraseñas coincidan
   passwordMatchValidator(control: AbstractControl): ValidationErrors | null {
     const password = control.get('password');
     const confirmPassword = control.get('confirmPassword');
@@ -50,7 +69,6 @@ export class RegisterComponent implements OnInit {
     return null;
   }
 
-  // Validador personalizado para el dominio del email
   emailDomainValidator(control: AbstractControl): ValidationErrors | null {
     const email = control.value;
     const domain = email.substring(email.lastIndexOf("@") + 1);
@@ -60,7 +78,6 @@ export class RegisterComponent implements OnInit {
     return null;
   }
 
-  // Validador personalizado para la fortaleza de la contraseña
   passwordStrengthValidator(control: AbstractControl): ValidationErrors | null {
     const password = control.value;
     const hasNumber = /\d/.test(password);
@@ -71,7 +88,6 @@ export class RegisterComponent implements OnInit {
     return null;
   }
 
-  // Validador personalizado para asegurarse de que el campo no contenga números
   noNumbersValidator(control: AbstractControl): ValidationErrors | null {
     const value = control.value;
     const hasNumber = /\d/.test(value);

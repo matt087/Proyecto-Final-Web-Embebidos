@@ -21,4 +21,8 @@ export class UserService {
   updateUser(userId: string, user: Partial<User>): Observable<User> {
     return this.http.put<User>(`${this.apiUrl}/update-user/${userId}`, user);
   }
+
+  register(user: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/register`, user);
+  }
 }

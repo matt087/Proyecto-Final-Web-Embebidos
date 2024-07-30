@@ -13,25 +13,34 @@ var querystring = require('querystring');
 var url = require('url');
 
 //LOGIN
+
 router.post('/register', async (req, res) => {
-  const { nombre, email, password1, password2, isAdmin, isOperator} = req.body;
-
-  // Verificar si las contraseñas coinciden
-  if (password1 !== password2) {
-      return res.status(400).json({ error: "Las contraseñas no coinciden" });
-  }
-
-  const newUser = new User ({ nombre, email, password1, password2,  isAdmin, isOperator });
+    const { nombre, email, password1, password2, isAdmin, isOperator } = req.body;
+      if (password1 !== password2) {
+      return res.status(400).json({ error: 'Las contraseñas no coinciden' });
+    }
+    try {
+      let user = await User.findOne({ email });
+      if (user) {
+        return res.status(400).json({ error: 'El usuario ya existe' });
+      }
+        user = new User({
+        nombre,
+        email,
+        password1, 
+        password2,
+        isAdmin,
+        isOperator
+      });
+      await user.save();
   
-  try {
-      await newUser.save();
-      const token = jwt.sign({_id: newUser._id}, 'secretKeyDCICC');
-      res.status(200).json({_id: newUser._id});
-
-  } catch (error) {
+      const token = jwt.sign({ _id: user._id }, 'secretKeyDCICC');
+  
+      res.status(200).json({ _id: user._id, token });
+    } catch (error) {
       res.status(400).json({ error: error.message });
-  }
-});
+    }
+  });
 
 //SENSOR
 router.post('/sensor', async (req, res) => {
@@ -147,38 +156,6 @@ router.post('/login', async(req, res) =>{
     }
     const token = jwt.sign({ id: userFind._id, role: rol }, 'secretKeyDCICC');    
     return res.status(200).json({token, role: rol});
-})
-
-router.put('/update', async (req, res) => {
-    const { email, newPassword } = req.body;
-    try {
-        const userFind = await User.findOne({ email });
-        if (!userFind) return res.status(404).send("Usuario no encontrado");
-        userFind.password1 = newPassword;
-        await userFind.save();
-        res.status(200).send("Contraseña actualizada correctamente");
-    } catch (error) {
-        res.status(500).send("Error al actualizar la contraseña");
-    }
-})
-
-router.delete('/delete', async (req, res) =>{
-    const {email, password1} = req.body;
-    try
-    {
-        const userFind = await User.findOne({ email });
-        if (!userFind) return res.status(401).send("El correo no existe");
-        if (userFind.password1 !== password1) return res.status(401).send("Contraseña incorrecta");
-
-        
-        await userFind.deleteOne({_id: User._id});
-        res.status(200).send("El usuario ha sido eliminado");
-    }
-    catch(error)
-    {
-        res.status(500).send("La eliminación ha sido incorrecta");
-    }
-    
 })
 
 module.exports = router;
