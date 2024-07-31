@@ -1,7 +1,8 @@
 .navbar{
     width: 100vw;
     display: flex;
-    height: 11vh;
+    min-height: 11vh;
+    max-height: 15vh;
     background-color: #506EB4;
     padding: 0;
     color: white;
@@ -21,14 +22,12 @@
 .nav-logo img{
     height: 10vh;
 }
-.login{
-    margin-left: 15vw;
-}
+
 .nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 49%;
+    width: 55%;
 
 }
 .nav-links {
@@ -79,6 +78,7 @@
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
+    min-width: 12vw;
   }
 
 .privado button:hover{
@@ -88,3 +88,8 @@
     border-radius: 5px;
     cursor: pointer;
   }
+
+  .login{
+    margin-left: 10vw;
+    min-width: 20vw;
+}
